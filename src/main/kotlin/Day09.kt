@@ -6,9 +6,8 @@ fun main() {
     val knots = List(n) { Pos() }
     val allTailPos = mutableSetOf(knots.last().copy())
     for (line in readInput(9)) {
-        val parts = line.split(" ")
-        repeat(parts[1].toInt()) {
-            knots.first().move(parts[0][0])
+        repeat(line.substring(line.indexOf(' ') + 1).toInt()) {
+            knots.first().move(line[0])
             for (i in 1 until knots.size) {
                 val H = knots[i-1]
                 val T = knots[i]
@@ -24,7 +23,6 @@ fun main() {
 }
 
 private data class Pos(var x: Int = 0, var y: Int = 0) {
-    fun copy() = Pos(x, y)
     fun dist(p: Pos) = max(abs(x - p.x), abs(y - p.y))
     fun move(dir: Char) {
         when (dir) {
