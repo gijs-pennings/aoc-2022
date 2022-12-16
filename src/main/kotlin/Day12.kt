@@ -5,10 +5,10 @@ fun main() {
     val grid = Array(w) { x -> Array(h) { y -> Node(x, y, lines[y][x]) } }
     val nodes = grid.flatten()
     for (n in nodes) {
-        if (n.x-1 >= 0 && n.h <= grid[n.x-1][n.y].h+1) n.adjRev.add(grid[n.x-1][n.y])
-        if (n.x+1 <  w && n.h <= grid[n.x+1][n.y].h+1) n.adjRev.add(grid[n.x+1][n.y])
-        if (n.y-1 >= 0 && n.h <= grid[n.x][n.y-1].h+1) n.adjRev.add(grid[n.x][n.y-1])
-        if (n.y+1 <  h && n.h <= grid[n.x][n.y+1].h+1) n.adjRev.add(grid[n.x][n.y+1])
+        if (n.x-1 >= 0 && n.h <= grid[n.x-1][n.y].h + 1) n.adjRev.add(grid[n.x-1][n.y])
+        if (n.x+1 <  w && n.h <= grid[n.x+1][n.y].h + 1) n.adjRev.add(grid[n.x+1][n.y])
+        if (n.y-1 >= 0 && n.h <= grid[n.x][n.y-1].h + 1) n.adjRev.add(grid[n.x][n.y-1])
+        if (n.y+1 <  h && n.h <= grid[n.x][n.y+1].h + 1) n.adjRev.add(grid[n.x][n.y+1])
     }
 
     val first = nodes.first { it.isEnd }
@@ -32,7 +32,7 @@ private data class Node(val x: Int, val y: Int, val c: Char) {
         'E' -> 25
         else -> c - 'a'
     }
-    val isStart = h == 0  // use `l == 'S'` for part 1
+    val isStart = h == 0  // use `c == 'S'` for part 1
     val isEnd = c == 'E'
 
     val adjRev = mutableListOf<Node>()
