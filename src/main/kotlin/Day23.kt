@@ -96,10 +96,3 @@ private enum class Dir(
         if (x == 0) Pos(+1, y) else Pos(x, +1)
     ))
 }
-
-private data class Pos(
-    val x: Int,
-    val y: Int
-) {
-    operator fun plus(p: Pos) = Pos(x + p.x, y + p.y)
-}

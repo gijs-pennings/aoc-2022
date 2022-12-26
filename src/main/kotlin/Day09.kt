@@ -3,7 +3,7 @@ import kotlin.math.max
 
 fun main() {
     val n = 10  // use n=2 for part 1
-    val knots = List(n) { Pos() }
+    val knots = List(n) { MutablePos() }
     val allTailPos = mutableSetOf(knots.last().copy())
     for (line in readInput(9)) {
         repeat(line.substring(line.indexOf(' ') + 1).toInt()) {
@@ -22,8 +22,11 @@ fun main() {
     println(allTailPos.size)
 }
 
-private data class Pos(var x: Int = 0, var y: Int = 0) {
-    fun dist(p: Pos) = max(abs(x - p.x), abs(y - p.y))
+private data class MutablePos(
+    var x: Int = 0,
+    var y: Int = 0
+) {
+    fun dist(p: MutablePos) = max(abs(x - p.x), abs(y - p.y))
     fun move(dir: Char) {
         when (dir) {
             'R' -> x++

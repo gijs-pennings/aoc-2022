@@ -30,8 +30,6 @@ fun main() {
     println(s.time)
 }
 
-private data class Pos(val x: Int, val y: Int)
-
 private data class Blizzard(
     val x: Int,
     val y: Int,
